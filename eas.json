@@ -1,0 +1,19 @@
+{
+  "build": {
+    "preview": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "android": {
+        "gradleCommand": ":app:verifySpokflowRelease",
+        "applicationArchivePath": "android/app/build/outputs/apk/release/*.apk"
+      }
+    },
+    "production": {
+      "developmentClient": false,
+      "android": {
+        "gradleCommand": ":app:verifySpokflowRelease",
+        "applicationArchivePath": "android/app/build/outputs/bundle/release/*.aab"
+      }
+    }
+  }
+}

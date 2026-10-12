@@ -1,0 +1,116 @@
+{
+  "expo": {
+    "name": "SpokFlow",
+    "slug": "spokflow",
+    "scheme": "spokflow",
+    "version": "1.0.0",
+    "updates": {
+      "enabled": false,
+      "checkAutomatically": "NEVER",
+      "fallbackToCacheTimeout": 0
+    },
+    "orientation": "portrait",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": [
+      "assets/*.png"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.spokflow.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "SpokFlow uses your microphone to turn your speech into notes and checklists.",
+        "UIBackgroundModes": [],
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "entitlements": {
+        "com.apple.developer.default-data-protection": "NSFileProtectionComplete"
+      },
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.spokflow.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FBFAF7"
+      },
+      "permissions": [
+        "RECORD_AUDIO"
+      ],
+      "versionCode": 1,
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_MEDIA_IMAGES"
+      ],
+      "allowBackup": false
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-sqlite",
+        {
+          "useSQLCipher": true
+        }
+      ],
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false,
+          "microphonePermission": "SpokFlow uses your microphone to turn your speech into notes and checklists."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#FBFAF7"
+        }
+      ],
+      "./scripts/with-speech-model",
+      ["llama.rn", { "enableOpenCLAndHexagon": false }],
+      "./scripts/with-stable-android-build",
+      "./scripts/with-release-signing",
+      "./scripts/with-data-protection",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": false,
+            "enableMinifyInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "extraProguardRules": "# Native speech, text and PCM modules use JNI and reflection.\n-keep class com.rnwhisper.** { *; }\n-keep class com.rnllama.** { *; }\n-keep class com.imxiqi.rnliveaudiostream.** { *; }"
+          }
+        }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": false
+        }
+      ],
+      "expo-asset"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "revenueCat": {
+        "ios": "REPLACE_WITH_APPLE_PUBLIC_SDK_KEY",
+        "android": "REPLACE_WITH_GOOGLE_PUBLIC_SDK_KEY"
+      },
+      "legal": {
+        "controller": "REPLACE_WITH_LEGAL_NAME",
+        "email": "REPLACE_WITH_CONTACT_EMAIL",
+        "address": "REPLACE_WITH_POSTAL_ADDRESS"
+      }
+    }
+  }
+}

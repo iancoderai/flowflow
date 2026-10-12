@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Expo / build output
+.expo/
+dist/
+web-build/
+android/
+ios/
+.native-backup/
+
+# Large offline speech model - fetched via scripts/verify-model.js
+assets/models/*.bin
+assets/models/*.bin.part
+assets/models/*.gguf
+assets/models/*.gguf.part
+
+# Local environment values
+.env
+.env.local
+
+# Generated
+expo-env.d.ts
+assets/*.bundle
+
+# Editor / local tooling
+.idea/
+.claude/settings.local.json
+
+# Logs & OS noise
+*.log
+.DS_Store
+
+# Local MCP endpoint of the JetBrains IDE (port differs per machine)
+.mcp.json
